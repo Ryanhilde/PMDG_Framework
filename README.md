@@ -30,12 +30,12 @@ Documentation for ARX methods and tools can be found here: https://arx.deidentif
 <h4> Part 1: Control-Flow Vectorization </h4> Before we can apply k-anonymity to the trace variants, we need to select an alignment strategy.
 In this work, we offer a naive and MSA vectorizations.
 
-<h5> MSA Vectorization: Run get_traces_*LOG_NAME*.py depending on the log to convert the event names into a format that is usable for MSA. We use the open source tool, MAFFA for the MSA vectorization: https://mafft.cbrc.jp/alignment/software/. Once the traces are aligned, you can reconstruct the aligned trace variants using *LOG_NAME*_Clustering.py, respectively. Next these trace variants need to be passed to ARX for anonymization, then finally the log needs to be reconstructed using rewrite_traces_in_log.py. 
+<h5> MSA Vectorization: Run get_traces_**LOG_NAME**.py depending on the log to convert the event names into a format that is usable for MSA. We use the open source tool, MAFFA for the MSA vectorization: https://mafft.cbrc.jp/alignment/software/. Once the traces are aligned, you can reconstruct the aligned trace variants using **LOG_NAME**_Clustering.py, respectively. Next these trace variants need to be passed to ARX for anonymization, then finally the log needs to be reconstructed using rewrite_traces_in_log.py. 
 
-<h5> Naive Vectorization: First the encoding must be created using *Log_Name*_naive_encoding.py. Then we pass these variants to ARX and finally reconstruct the log using rewrite_traces_in_log.py. 
+<h5> Naive Vectorization: First the encoding must be created using **Log_Name**_naive_encoding.py. Then we pass these variants to ARX and finally reconstruct the log using rewrite_traces_in_log.py. 
 
 
-<h4> Part 2: Attribute Anonymization</h4> Now the attributes need to be selected within each trace variant. We do this based on length in *INSERT PY FILE FROM PC*. Next, we take these variants and run them in an ARX Java environment. The script is run using AnonymizeAttributes.java. Final these files are combined and passed back to our PM4Py environment to be rewritten into event logs.
+<h4> Part 2: Attribute Anonymization</h4> Now the attributes need to be selected within each trace variant. We do this based on length in **INSERT PY FILE FROM PC**. Next, we take these variants and run them in an ARX Java environment. The script is run using AnonymizeAttributes.java. Final these files are combined and passed back to our PM4Py environment to be rewritten into event logs.
 
 <h4> Part 3: Applying Attribute Anonymization</h4> The ARX attribute anonymizations are applied to the event logs in rewrite_attributes.py and the privay-enhanced event log is then passed to various organizational mining applications. 
 
