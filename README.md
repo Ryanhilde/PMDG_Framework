@@ -26,7 +26,7 @@ The repo can be found here: https://github.com/arx-deidentifier/arx
 Documentation for ARX methods and tools can be found here: https://arx.deidentifier.org/wp-content/uploads/javadoc/current/api/index.html 
 
 <h1>How to run PMDG </h1>
-
+<h3> Each Component is broken down into a folder <h3>
 <h3> Component 1: Control-Flow Vectorization </h4> Before we can apply k-anonymity to the trace variants, we need to select an alignment strategy.
 In this work, we offer a naive and MSA vectorizations.
 
