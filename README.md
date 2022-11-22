@@ -35,7 +35,7 @@ In this work, we offer a naive and MSA vectorizations.
   <h5> Naive Vectorization </h5> First the encoding must be created using <b>Log_Name<b>_naive_encoding.py. Then we pass these variants to ARX and finally reconstruct the log using rewrite_traces_in_log.py. 
 
 
-<h3> Component 2: Attribute Anonymization</h3> Now the attributes need to be selected within each trace variant. We do this based on length in <b>INSERT PY FILE FROM PC<b>. Next, we take these variants and run them in an ARX Java environment. The script is run using AnonymizeAttributes.java. Final these files are combined and passed back to our PM4Py environment to be rewritten into event logs.
+<h3> Component 2: Attribute Anonymization</h3> Now the attributes need to be selected within each trace variant. We do this based on length in <b>ARXAnonymizeAttribute.java<b>. Here we take these variants and run them in an ARX Java environment. Finally, these files are combined and passed back to our PM4Py environment to be rewritten into event logs.
 
 <h3> Component 3: Applying Attribute Anonymization</h3> The ARX attribute anonymizations are applied to the event logs in rewrite_attributes.py and the privay-enhanced event log is then passed to various organizational mining applications. 
 
