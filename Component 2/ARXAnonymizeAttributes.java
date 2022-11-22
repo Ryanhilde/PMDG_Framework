@@ -47,19 +47,18 @@ public class ARXAnonymizeAttributes extends Example {
     public static void main(String[] args) throws IOException {
         long count;
         int k = 20;
-        try (Stream<Path> files = Files.list(Paths.get("C:\\Users\\ryanh\\OneDrive\\Desktop\\ARX PACE\\BPIC 2013 Organization Involved\\Naive\\k = " + k))) {
+        try (Stream<Path> files = Files.list(Paths.get("Path\\Vectorization\\k = " + k))) {
             count = files.count();
         }
         long start1 = System.nanoTime();
         for (long file = 1; file < count; file++) {
             try {
-                Data data = Data.create("C:\\Users\\ryanh\\OneDrive\\Desktop\\ARX PACE\\BPIC 2013 Organization Involved\\MSA\\k = " + k + "\\output_for_arx_2_" + file + ".csv", StandardCharsets.UTF_8, ',');
+                Data data = Data.create("Path\\\Log\\Vectorization\\k = " + k + "\\output_" + file + ".csv", StandardCharsets.UTF_8, ',');
 
                 int columns = data.getHandle().getNumColumns();
 
                 for (int i = 1; i < columns; i++) {
-                    data.getDefinition().setAttributeType("row_" + i, AttributeType.Hierarchy.create("C:\\Users\\ryanh\\OneDrive\\" +
-                    "Desktop\\ARX PACE\\BPIC 2013 Organization Involved\\organization_involved_semantic.csv", StandardCharsets.UTF_8, ','));
+                    data.getDefinition().setAttributeType("row_" + i, AttributeType.Hierarchy.create("hierarchy", StandardCharsets.UTF_8, ','));
                 }
                 data.getDefinition().setAttributeType("case", AttributeType.INSENSITIVE_ATTRIBUTE);
 
@@ -71,8 +70,7 @@ public class ARXAnonymizeAttributes extends Example {
                 // config.setSuppressionLimit(0.02d);
                 config.setAlgorithm(ARXConfiguration.AnonymizationAlgorithm.BEST_EFFORT_BOTTOM_UP);
                 ARXResult result = anonymizer.anonymize(data, config);
-                result.getOutput(false).save("C:\\Users\\ryanh\\OneDrive\\Desktop\\ARX PACE\\BPIC 2013 Organization Involved\\MSA Output\\k = " + k +
-                        "\\anonymized_data_"
+                result.getOutput(false).save("Output_"
                         + file + ".csv", ',');
             }
             catch (IllegalArgumentException ignored) {
