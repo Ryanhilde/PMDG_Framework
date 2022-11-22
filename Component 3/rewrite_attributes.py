@@ -49,9 +49,9 @@ log = xes_importer.apply(str(pathlib.Path().resolve()) + "/bpi_challenge_2013_in
 logs = []
 
 k = 20
-alignment = "MSA"
-attribute = 'resource country'
-directory = "/Users/ryanhildebrant/PycharmProjects/PACE/BPIC 2013 " + attribute + "/" + alignment + "/k = " + str(k)
+alignment = "Vectorization"
+attribute = "attribute"
+directory = "/path/"
 
 for file in os.listdir(directory):
     privacy_log = pd.read_csv(directory + "/" + os.fsdecode(file))
