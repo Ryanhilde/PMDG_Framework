@@ -67,11 +67,11 @@ public class ARXAnonymizeAttributes extends Example {
                 ARXConfiguration config = ARXConfiguration.create();
                 config.addPrivacyModel(new KAnonymity(k));
                 config.setSuppressionLimit(1.0);
-                // config.setSuppressionLimit(0.02d);
                 config.setAlgorithm(ARXConfiguration.AnonymizationAlgorithm.BEST_EFFORT_BOTTOM_UP);
+                
                 ARXResult result = anonymizer.anonymize(data, config);
-                result.getOutput(false).save("Output_"
-                        + file + ".csv", ',');
+                
+                result.getOutput(false).save("Output_" + file + ".csv", ',');
             }
             catch (IllegalArgumentException ignored) {
                 System.out.println(ignored);
