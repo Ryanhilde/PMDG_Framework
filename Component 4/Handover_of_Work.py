@@ -26,7 +26,6 @@ privacy_log = xes_importer.apply("*INSERT EVENT LOG*")
 
 def generate_handovers(log, attribute):
     csv_log = Convert_Log.Convert_Log(log)
-    #print(csv_log.convert_from_xes_to_csv())
     csv_log = csv_log.convert_from_xes_to_csv()
 
     log_csv = dataframe_utils.convert_timestamp_columns_in_df(csv_log)
