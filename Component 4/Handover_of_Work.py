@@ -21,16 +21,7 @@ alignment = "MSA"
 attribute = "resource country"
 k = 20
 
-#privacy_log = xes_importer.apply(str(pathlib.Path().resolve()) + "\\new logs\\BPIC 2013 " + alignment + " " + attribute +
-#                         "\\bpic_" + alignment + "_fully_aligned_k_" + str(k) + ".xes")
-privacy_log = xes_importer.apply("C:/Users/ryanh/OneDrive - San Diego State University (SDSU.EDU)/SDSU Graduate Course Notes/Research/Papers/Code/new logs/BPIC 2013 MSA resource country/bpic_MSA_fully_aligned_k_20.xes")
-
-# organization_country_privacy_log = xes_importer.apply(
-#    str(pathlib.Path().resolve()) + "\\Final Organization Country\\final_organization_country_log_k_20.xes")
-# organization_involved_privacy_log = xes_importer.apply(
-#    str(pathlib.Path().resolve()) + "\\Final Organization Involved\\final_organization_involved_log_k_20.xes")
-# org_role_privacy_log = xes_importer.apply(
-#    str(pathlib.Path().resolve()) + "\\Final Org Role Logs\\final_organization_role_log_k_2.xes")
+privacy_log = xes_importer.apply("*INSERT EVENT LOG*")
 
 
 def generate_handovers(log, attribute):
@@ -73,8 +64,6 @@ def generate_log(log, threshold, attribute):
 
 def calculate_precision(privacy_log, attribute):
     hw_values, countries = generate_handovers(privacy_log, attribute)
-    # gviz_hw_py = sna_visualizer.apply(hw_values, variant=sna_visualizer.Variants.PYVIS)
-    # sna_visualizer.view(gviz_hw_py, variant=sna_visualizer.Variants.PYVIS)
 
     privacy_values = []
     counter = 0
@@ -316,18 +305,21 @@ resource_country_total_score = calculate_score(privacy_log, 'resource country',
                                                len(resource_country_generalization_values_dict['0']),
                                                resource_country_generalization_dict,
                                                resource_country_generalization_dict['World'])
-#organization_country_total_score = calculate_score(privacy_log, 'organization country',
-#                                                   organization_country_generalization_values_dict,
-#                                                   len(organization_country_generalization_values_dict['0']),
-#                                                   organization_country_generalization_dict,
-#                                                   organization_country_generalization_dict['World'])
-#org_role_total_score = calculate_score(org_role_privacy_log, 'org:role', org_role_generalization_values_dict,
-#                                       len(org_role_generalization_values_dict['A2_5']),
-#                                       org_role_generalization_dict, org_role_generalization_dict['*'])
-#organization_involved_total_score = calculate_score(privacy_log, 'organization involved',
-#                                                   organization_involved_generalization_values_dict,
-#                                                   len(organization_involved_generalization_values_dict[
-#                                                           'Org line A2']),
-#                                                   organization_involved_generalization_dict,
-#                                                   organization_involved_generalization_dict['Org line *'])
+
+organization_country_total_score = calculate_score(privacy_log, 'organization country',
+                                                   organization_country_generalization_values_dict,
+                                                   len(organization_country_generalization_values_dict['0']),
+                                                   organization_country_generalization_dict,
+                                                   organization_country_generalization_dict['World'])
+
+org_role_total_score = calculate_score(org_role_privacy_log, 'org:role', org_role_generalization_values_dict,
+                                       len(org_role_generalization_values_dict['A2_5']),
+                                       org_role_generalization_dict, org_role_generalization_dict['*'])
+
+organization_involved_total_score = calculate_score(privacy_log, 'organization involved',
+                                                   organization_involved_generalization_values_dict,
+                                                   len(organization_involved_generalization_values_dict[
+                                                           'Org line A2']),
+                                                   organization_involved_generalization_dict,
+                                                   organization_involved_generalization_dict['Org line *'])
 print(resource_country_total_score)
